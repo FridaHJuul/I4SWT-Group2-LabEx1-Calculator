@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -59,5 +60,24 @@ namespace CalculatorProject.Test.Unit
          Assert.That(Math.Round(uut.Power(number1, number2), 3), Is.EqualTo(number3));
       }
 
-   }
+       [TestCase(4,2,2)]
+       [TestCase(-5,-5,1)]
+       [TestCase(-5,1,-5)]
+       [TestCase(10,-2,-5)]
+       [TestCase(0,2,0)]
+       public void Divide_DivideNumber1WithNumber2_EqualsNumber3(double number1, double number2, double number3)
+       {
+           Assert.That(Math.Round(uut.Divide(number1, number2), 3), Is.EqualTo(number3));
+       }
+
+       [Test]
+       public void Divide_DivisionByZero_ThrowsException()
+       {
+           var ex = Assert.Catch<DivideByZeroException>(() => uut.Divide(6, 0));
+           StringAssert.Contains("Division by zero not possible",ex.Message);
+       }
+
+
+
+    }
 }
