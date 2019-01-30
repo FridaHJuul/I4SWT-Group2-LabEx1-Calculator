@@ -95,5 +95,11 @@ namespace CalculatorProject.Test.Unit
          Assert.That(uut.Accumulator,Is.EqualTo(uut.Subtract(8,6)));
       }
 
+      [Test]
+      public void Power_RaiseNegativeNumberToNonInteger_ExceptionNotARealNumber()
+      {
+         var ex = Assert.Catch<Exception>(() => uut.Power(-2, 3.1));
+         StringAssert.Contains("Not a real number", ex.Message);
+      }
    }
 }
