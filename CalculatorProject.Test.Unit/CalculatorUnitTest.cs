@@ -23,6 +23,7 @@ namespace CalculatorProject.Test.Unit
       [TestCase(-2.1, -3.4, -5.5)]
       [TestCase(0, 2.1, 2.1)]
       [TestCase(-2.1, 0, -2.1)]
+      [TestCase(2,4,6)]
       public void Add_AddNumber1AndNumber2_EqualsNumber3(double number1, double number2, double number3)
       {
          Assert.That(Math.Round(uut.Add(number1, number2),2),Is.EqualTo(number3));
