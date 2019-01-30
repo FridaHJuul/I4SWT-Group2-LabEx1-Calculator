@@ -49,7 +49,7 @@ namespace CalculatorProject.Test.Unit
       }
 
       [TestCase(2.1, 3.4, 12.461)]
-      //[TestCase(-2.1, 3.4, -12.461)] Math.Pow kan ikke opløfte et negativt tal
+      [TestCase(-2, 2, 4)] 
       [TestCase(2.1, -3.4, 0.08)]
       [TestCase(0, 2.1, 0)]
       [TestCase(-2.1, 0, 1)]
