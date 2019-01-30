@@ -38,7 +38,9 @@ namespace CalculatorProject
             throw new Exception("Not a real number");
          }
          else
-         return Math.Pow(x, exp);
+         result = Math.Pow(x, exp);
+         Accumulator = result;
+         return result;
       }
    }
 }
