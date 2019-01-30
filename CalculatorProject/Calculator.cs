@@ -25,6 +25,11 @@ namespace CalculatorProject
 
       public double Power(double x, double exp)
       {
+         if (x < 0 && exp % 1 != 0)
+         {
+            throw new Exception("Not a real number");
+         }
+         else
          return Math.Pow(x, exp);
       }
    }

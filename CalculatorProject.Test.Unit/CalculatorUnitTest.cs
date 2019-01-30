@@ -59,5 +59,12 @@ namespace CalculatorProject.Test.Unit
          Assert.That(Math.Round(uut.Power(number1, number2), 3), Is.EqualTo(number3));
       }
 
+      [Test]
+      public void Power_RaiseNegativeNumberToNonInteger_ExceptionNotARealNumber()
+      {
+         var ex = Assert.Catch<Exception>(() => uut.Power(-2, 3.1));
+         StringAssert.Contains("Not a real number",ex.Message);
+      }
+
    }
 }
