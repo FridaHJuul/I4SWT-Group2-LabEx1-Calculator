@@ -59,5 +59,41 @@ namespace CalculatorProject.Test.Unit
          Assert.That(Math.Round(uut.Power(number1, number2), 3), Is.EqualTo(number3));
       }
 
+      [Test]
+      public void Accumulator_AddIsCalled_AccumulatorIsEqualToResultOfAddMethod()
+      {
+         uut.Add(3, 4);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Add(3,4)));
+      }
+
+      [Test]
+      public void Accumulator_SubtractIsCalled_AccumulatorIsEqualToResultOfSubtractMethod()
+      {
+         uut.Subtract(5, 1);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Subtract(5,1)));
+      }
+
+      [Test]
+      public void Accumulator_MultiplyIsCalled_AccumulatorIsEqualToResultOfMultiplyMethod()
+      {
+         uut.Multiply(3, 55);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Multiply(3,55)));
+      }
+
+      [Test]
+      public void Accumulator_PowerIsCalled_AccumulatorIsEqualToResultOfPowerMethod()
+      {
+         uut.Power(2, -4);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Power(2,-4)));
+      }
+
+      [Test]
+      public void Accumulator_Call2Methods_AccumulatorIsEqualToTheResultOfLastCalledMethod()
+      {
+         uut.Add(3, 6);
+         uut.Subtract(8, 6);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Subtract(8,6)));
+      }
+
    }
 }
