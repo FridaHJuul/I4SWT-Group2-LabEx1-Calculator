@@ -77,7 +77,47 @@ namespace CalculatorProject.Test.Unit
            StringAssert.Contains("Division by zero not possible",ex.Message);
        }
 
+      [Test]
+      public void Accumulator_AddIsCalled_AccumulatorIsEqualToResultOfAddMethod()
+      {
+         uut.Add(3, 4);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Add(3,4)));
+      }
 
+      [Test]
+      public void Accumulator_SubtractIsCalled_AccumulatorIsEqualToResultOfSubtractMethod()
+      {
+         uut.Subtract(5, 1);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Subtract(5,1)));
+      }
 
-    }
+      [Test]
+      public void Accumulator_MultiplyIsCalled_AccumulatorIsEqualToResultOfMultiplyMethod()
+      {
+         uut.Multiply(3, 55);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Multiply(3,55)));
+      }
+
+      [Test]
+      public void Accumulator_PowerIsCalled_AccumulatorIsEqualToResultOfPowerMethod()
+      {
+         uut.Power(2, -4);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Power(2,-4)));
+      }
+
+      [Test]
+      public void Accumulator_Call2Methods_AccumulatorIsEqualToTheResultOfLastCalledMethod()
+      {
+         uut.Add(3, 6);
+         uut.Subtract(8, 6);
+         Assert.That(uut.Accumulator,Is.EqualTo(uut.Subtract(8,6)));
+      }
+
+      [Test]
+      public void Power_RaiseNegativeNumberToNonInteger_ExceptionNotARealNumber()
+      {
+         var ex = Assert.Catch<Exception>(() => uut.Power(-2, 3.1));
+         StringAssert.Contains("Not a real number", ex.Message);
+      }
+   }
 }
