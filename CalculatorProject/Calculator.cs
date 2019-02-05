@@ -45,15 +45,14 @@ namespace CalculatorProject
 
        public double Divide(double dividend, double divisor)
        {
-           try
+           if (divisor == 0)
+           {
+               throw new DivideByZeroException("Division by zero not possible");
+           }
+           else
            {
                return dividend / divisor;
-           }
-           catch (DivideByZeroException e)
-           {
-               Console.WriteLine(e.Message);
-               throw;
-           }
+            }
        }
    }
 }
