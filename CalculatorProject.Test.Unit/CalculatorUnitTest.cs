@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace CalculatorProject.Test.Unit
 {
-   [TestFixture]
+   [TestFixture] //cmon
    public class CalculatorUnitTest
    {
       private Calculator uut;
